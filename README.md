@@ -1,2 +1,9 @@
-# alura-stickers
-Alura Stickers / Imersão Java
+# Alura Stickers / Imersão Java
+![issues](https://img.shields.io/github/issues/augustocfmer/alura-stickers)
+![forks](https://img.shields.io/github/forks/augustocfmer/alura-stickers)
+![license](https://img.shields.io/github/license/augustocfmer/alura-stickers)
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+<br>
+<img src ="https://user-images.githubusercontent.com/30644606/179655559-b3a946f1-0d17-4e35-89f1-70df07b1faa1.png">
+
+
