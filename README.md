@@ -8,3 +8,8 @@
 
 
 <img src ="https://user-images.githubusercontent.com/30644606/179664842-fcc26711-93f9-4b6d-8983-a086b748d8ec.JPG">
+
+Tem sido divertido construir com a Imersão!
+
+
+<img src ="https://user-images.githubusercontent.com/30644606/179868420-08543f95-dab6-4eed-bd56-83e40e07afa0.png">
