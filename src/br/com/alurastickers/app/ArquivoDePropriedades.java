@@ -19,7 +19,7 @@ public class ArquivoDePropriedades {
 	public Properties getProp() throws IOException {
 		
 		Properties props = new Properties();
-		FileInputStream file = new FileInputStream("./properties/dados.properties");
+		FileInputStream file = new FileInputStream("src/dados.properties");
 		props.load(file);
 		return props;
 	}

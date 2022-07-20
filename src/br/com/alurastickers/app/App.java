@@ -2,7 +2,9 @@ package br.com.alurastickers.app;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -39,20 +41,21 @@ public class App {
 			List<Map<String, String>> listaDeFilmes = parser.parse(body);
 			
 			//exibir e manipular os dados
+			GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
 			for (Map<String, String> filme : listaDeFilmes) {
-				System.out.println("Título: \u001b[3m " + filme.get("title"));  
-				System.out.println("Poster: \u001b[3m " + filme.get("image")); 
-				System.out.println("\\u001b[37;1m \\u001b[44;1m Classificação: \\u001b[3m " + filme.get("imDbRating")); 
-				addEstrela(filme.get("imDbRating"));
-				System.out.println();
+				
+				String urlImagem = filme.get("image");
+				String nomeArquivo = "saida/" + filme.get("title").replace(":", "-") + ".png";
+				InputStream inputStream = new URL(urlImagem).openStream();
+				
+				geradora.cria(inputStream, nomeArquivo, filme.get("imDbRating"));
+				
+				System.out.println("Título: "+ filme.get("title"));
+	            System.out.println("Classificação: "+ filme.get("imDbRating"));
+	            System.out.println();
 			}
 		}
 		
-		public void addEstrela(String rating) {
-			for(int i = (int) Double.parseDouble(rating); i>= 1; i--) {
-				System.out.print("*");
-			}
-		}
 		
 		public String getUrl() {
 			return url;
