@@ -30,28 +30,26 @@ public class App {
 		public void conectaEBusca() throws IOException, InterruptedException {
 			
 			//fazer uma conexao HTTP e buscar os top 250 filmes
-			URI endereco = URI.create(this.url);
-			HttpClient client = HttpClient.newHttpClient();
-			HttpRequest request = HttpRequest.newBuilder(endereco).GET().build();
-			HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-			String body = response.body();
 			
-			// extrair só os dados que interessam(titulo, poster, classificacao)
-			JsonParser parser = new JsonParser();
-			List<Map<String, String>> listaDeFilmes = parser.parse(body);
+			ClienteHttp http = new ClienteHttp();
+			String json = http.buscaDados(this.url);
 			
 			//exibir e manipular os dados
+			ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
+			List<Conteudo> conteudos = extrator.extraiConteudo(json);
+			
 			GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
-			for (Map<String, String> filme : listaDeFilmes) {
+			
+			for (int i=0; i < 3; i++) {
 				
-				String urlImagem = filme.get("image");
-				String nomeArquivo = "saida/" + filme.get("title").replace(":", "-") + ".png";
-				InputStream inputStream = new URL(urlImagem).openStream();
+				Conteudo conteudo = conteudos.get(i);
 				
-				geradora.cria(inputStream, nomeArquivo, filme.get("imDbRating"));
+				String nomeArquivo = "saida/" + conteudo.getTitulo().replace(":", "-") + ".png";
+				InputStream inputStream = new URL(conteudo.getUrlImagem()).openStream();
 				
-				System.out.println("Título: "+ filme.get("title"));
-	            System.out.println("Classificação: "+ filme.get("imDbRating"));
+				geradora.cria(inputStream, nomeArquivo);
+				
+				System.out.println("Título: "+ conteudo.getTitulo());
 	            System.out.println();
 			}
 		}

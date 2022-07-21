@@ -17,14 +17,14 @@ public class ConsomeApp {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
-		App url = new App();
+		App inicia = new App();
 		
 		ArquivoDePropriedades fileprop = new ArquivoDePropriedades();
 		
 		Properties prop = fileprop.getProp();		
-		url.setUrl("https://api.mocki.io/v2/549a5d8b/" + prop.getProperty("prop.mostPopularTVs"));
+		inicia.setUrl("https://api.mocki.io/v2/549a5d8b/" + prop.getProperty("prop.nasaApod"));
 		
-		url.conectaEBusca();
+		inicia.conectaEBusca();
 
 	}
 
