@@ -22,7 +22,7 @@ public class ConsomeApp {
 		ArquivoDePropriedades fileprop = new ArquivoDePropriedades();
 		
 		Properties prop = fileprop.getProp();		
-		inicia.setUrl("https://api.mocki.io/v2/549a5d8b/" + prop.getProperty("prop.nasaApod"));
+		inicia.setUrl("http://localhost:8081/linguagens"); // + prop.getProperty("prop.mostPopularTVs"));
 		
 		inicia.conectaEBusca();
 

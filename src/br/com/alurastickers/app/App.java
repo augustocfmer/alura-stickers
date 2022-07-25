@@ -35,7 +35,7 @@ public class App {
 			String json = http.buscaDados(this.url);
 			
 			//exibir e manipular os dados
-			ExtratorDeConteudo extrator = new ExtratorDeConteudoDaNasa();
+			ExtratorDeConteudo extrator = new ExtratorDeConteudoDoIMDB();
 			List<Conteudo> conteudos = extrator.extraiConteudo(json);
 			
 			GeradoraDeFigurinhas geradora = new GeradoraDeFigurinhas();
